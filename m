@@ -30,7 +30,7 @@ deldef() {
 }
 
 watch() {
-    trap 'tput cnorm; exit' INT
+    trap 'tput cnorm; clear; exit' INT
     tput civis
     prev_hash=""
     while true; do
@@ -121,6 +121,11 @@ checkdef() {
 
 load() {
 	file=$(</tmp/m_file)
+}
+
+nl() {
+	load
+	echo "" >> $file && echo "m: new line added!"
 }
 
 # execute the passed function
